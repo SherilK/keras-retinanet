@@ -535,7 +535,7 @@ def main(args=None):
         validation_generator = None
 
     # start training
-    return training_model.fit_generator(
+    training_model.fit_generator(
         generator=train_generator,
         steps_per_epoch=args.steps,
         epochs=args.epochs,
@@ -547,6 +547,24 @@ def main(args=None):
         validation_data=validation_generator,
         initial_epoch=args.initial_epoch
     )
+    # summarize history for accuracy
+    plt.plot(training_model.history['accuracy'])
+    plt.plot(training_model.history['val_accuracy'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
+    # summarize history for loss
+    plt.plot(training_model.history['loss'])
+    plt.plot(training_model.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
+    
+    return training_model 
 
 
 if __name__ == '__main__':
