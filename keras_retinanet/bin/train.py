@@ -20,6 +20,7 @@ import argparse
 import os
 import sys
 import warnings
+import matplotlib.pyplot as plt
 
 from tensorflow import keras
 import tensorflow as tf
@@ -547,6 +548,8 @@ def main(args=None):
         validation_data=validation_generator,
         initial_epoch=args.initial_epoch
     )
+    # list all data in history
+    print(training_model.history.keys())
     # summarize history for accuracy
     plt.plot(training_model.history['accuracy'])
     plt.plot(training_model.history['val_accuracy'])
