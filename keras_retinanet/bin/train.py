@@ -549,22 +549,15 @@ def main(args=None):
         initial_epoch=args.initial_epoch
     )
     # list all data in history
-    print(training_model.history.keys())
-    # summarize history for accuracy
-    plt.plot(training_model.history['accuracy'])
-    plt.plot(training_model.history['val_accuracy'])
-    plt.title('model accuracy')
-    plt.ylabel('accuracy')
-    plt.xlabel('epoch')
-    plt.legend(['train', 'test'], loc='upper left')
-    plt.show()
+    print(training_model.history.history.keys())
     # summarize history for loss
-    plt.plot(training_model.history['loss'])
-    plt.plot(training_model.history['val_loss'])
+    plt.plot(training_model.history.history['loss'])
+    plt.plot(training_model.history.history['regression_loss'])
+    plt.plot(training_model.history.history['classification_loss'])
     plt.title('model loss')
     plt.ylabel('loss')
     plt.xlabel('epoch')
-    plt.legend(['train', 'test'], loc='upper left')
+    plt.legend(['loss', 'regression_loss', 'classification_loss'], loc='upper left')
     plt.show()
     
     return training_model 
