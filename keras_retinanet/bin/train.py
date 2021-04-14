@@ -551,14 +551,10 @@ def main(args=None):
     # list all data in history
     print(training_model.history.history.keys())
     # summarize history for loss
-    plt.plot(training_model.history.history['loss'])
-    plt.plot(training_model.history.history['regression_loss'])
-    plt.plot(training_model.history.history['classification_loss'])
-    plt.title('model loss')
-    plt.ylabel('loss')
-    plt.xlabel('epoch')
-    plt.legend(['loss', 'regression_loss', 'classification_loss'], loc='upper left')
-    plt.show()
+    print(training_model.history.history['loss'])
+    print(training_model.history.history['regression_loss'])
+    print(training_model.history.history['classification_loss'])
+
     
     return training_model 
 
