@@ -112,7 +112,7 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
             cv2.imwrite(os.path.join(save_path, '{}.png'.format(i)), raw_image)
 
         # copy detections to all_detections
-        for label in range(generator.num_classes()):
+        for label in range(generator.num_classes()-1):
             if not generator.has_label(label):
                 continue
 
@@ -141,7 +141,7 @@ def _get_annotations(generator):
         annotations = generator.load_annotations(i)
 
         # copy detections to all_annotations
-        for label in range(generator.num_classes()):
+        for label in range(generator.num_classes()-1):
             if not generator.has_label(label):
                 continue
 
@@ -181,7 +181,7 @@ def evaluate(
     # pickle.dump(all_annotations, open('all_annotations.pkl', 'wb'))
 
     # process detections and annotations
-    for label in range(generator.num_classes()):
+    for label in range(generator.num_classes()-1):
         if not generator.has_label(label):
             continue
 
