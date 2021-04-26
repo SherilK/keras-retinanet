@@ -554,6 +554,8 @@ def main(args=None):
     print(training_model.history.history['loss'])
     print(training_model.history.history['regression_loss'])
     print(training_model.history.history['classification_loss'])
+    if args.validation-annotations:
+        print(training_model.history.history['mAP'])
 
     
     return training_model 
